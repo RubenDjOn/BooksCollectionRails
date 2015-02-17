@@ -8,22 +8,14 @@
 			</div>
 			<div class="modal-body">
 
-				<%= form_for(book, html: { class: "form-horizontal" }) do |f| %>
+				<%= simple_form_for(book, html: { class: "form" }) do |f| %>
 
-				<div class="field form-group">
-					<%= f.label :Title  %>
-					<%= f.text_field :title  %>
-				</div>
-				<div class="field">
-					<%= f.label :Description %>
-					<%= f.text_field :description %>
-				</div>
-				<div class="field">
-					<%= f.label :Pages %>
-					<%= f.text_field :pages %>
-				</div>
+				<%= f.input :title , placeholder: 'Book Title' %>
+				<%= f.input :description , placeholder: 'Book Description' %>
+				<%= f.input :pages , placeholder: 'Pages Number' %>
 
 			</div>
+
 			<div class="modal-footer">
 				
 				<div class="actions">
