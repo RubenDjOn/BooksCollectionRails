@@ -11,15 +11,15 @@
 	</div>
 	<% end %>
 
-	<%= good_books %>
 	
+
 	<div class="list-group">
 		<% if @books.present? %>
 		<ul>
 			<% @books.each do |book| %>
 
 			<div class="col-xs-2">
-				<%= image_tag("https://s3.amazonaws.com/titlepages.leanpub.com/tr4w/hero?1421968559", class: 'img-thumbnail' ) %>
+				<%= image_tag book.image ,class: "img-thumbnail"  %>
 			</div>
 
 			<div class="col-xs-10 book_list">
@@ -34,12 +34,12 @@
 				</li>
 			</div>
 
-
 			<% end %>
 
 			<% else %>
 			<p>No content</p>
 			<% end %>
+
 		</ul>
 	</div>
 </div>
