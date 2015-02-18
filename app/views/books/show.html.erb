@@ -1,7 +1,13 @@
-<div class="comtainer">
+<div class="container">
 	<h1>Detail View </h1>
 	<hr>
-	<div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+	
+	<% if flash[:notice] %>
+	<div class="alert alert-success" role="alert" id="notice">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<%= flash[:notice] %>
+	</div>
+	<% end %>
 	
 	<div class="list-group">
 		<ul>
@@ -10,4 +16,5 @@
 			<li class="list-group-item">Pages: <%= @book.pages%></li>
 		</ul>	
 	</div>
+	<%= link_to "Back", books_path  %>
 </div>

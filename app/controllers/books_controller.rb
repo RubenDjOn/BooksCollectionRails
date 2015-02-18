@@ -3,7 +3,14 @@ class BooksController < ApplicationController
 
   def index
     @title = "Books List"
+
     @books = Book.all
+
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @books}
+    end      
+   
   end
 
   def show
