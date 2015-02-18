@@ -12,13 +12,5 @@ module BooksHelper
 		book_form_modal
 	end
 
-	def good_books
-
-		libros = ["Book 1", "Book 2"]
-
-		libros.each	do |libro|
-			puts "I read #{libro}"
-		end
-	end 
 
 end

@@ -1,9 +1,12 @@
-<div class="container">
+<header>
 	<h1><%= @title || "Book List" %></h1>
-	<%= new_book_modal %>
-	<!-- <%= link_to 'Add Book', new_book_path  %> -->
-	<hr>
-	
+	<div class="header_sub">
+		<%= new_book_modal %>
+		<!-- <%= link_to 'Add Book', new_book_path  %>  -->
+	</div>
+</header>
+
+<div class="container">
 	<% if flash[:notice] %>
 	<div class="alert alert-success" role="alert" id="notice">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -11,36 +14,34 @@
 	</div>
 	<% end %>
 
+	<% if @books.present? %>
+
+	<% @books.each do |book| %>
+
+	<div class="media">
+		<div class="media-left media-middle">
+			<%= image_tag book.image ,class: "img-thumbnail facebook"  %>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading"><%= link_to book.title, book %></h4>
+			<%= book.description %>
+			Pages: <%= book.pages %>
+		</div>
+		<div class="pull-right">
+			<%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+			<%= link_to "Edit", edit_book_path(book)  %> 
+		</div>
+	</div>
 	
 
-	<div class="list-group">
-		<% if @books.present? %>
-		<ul>
-			<% @books.each do |book| %>
+	<% end %>
 
-			<div class="col-xs-2">
-				<%= image_tag book.image ,class: "img-thumbnail"  %>
-			</div>
+	<% else %>
+	<p>No content</p>
+	<% end %>
 
-			<div class="col-xs-10 book_list">
-				<li class="list-group-item"><h4><%= link_to book.title, book %></h4></li>
-				<li class="list-group-item"><%= book.description %></li>
-				<li class="list-group-item">
-					Pages: <%= book.pages %>
-					<div class="pull-right">
-						<%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-						<%= link_to "Edit", edit_book_path(book)  %> 
-					</div>
-				</li>
-			</div>
 
-			<% end %>
-
-			<% else %>
-			<p>No content</p>
-			<% end %>
-
-		</ul>
-	</div>
 </div>
+
+
 
