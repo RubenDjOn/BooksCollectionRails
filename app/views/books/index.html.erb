@@ -7,6 +7,13 @@
 </header>
 
 <div class="container">
+	<%= form_tag(search_path, :method => "get") do %>
+	  <%= label_tag(:q, "Search for:") %>
+	  <%= text_field_tag(:q) %>
+	  <%= submit_tag("Search") %>
+	<% end %>
+
+
 	<% if flash[:notice] %>
 	<div class="alert alert-success" role="alert" id="notice">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
